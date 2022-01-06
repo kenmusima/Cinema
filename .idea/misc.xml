@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ken/AndroidStudioProjects/Cinema/app/src/main/res/drawable/movie.xml" value="0.2890625" />
+        <entry key="..\:/Users/ken/AndroidStudioProjects/Cinema/app/src/main/res/layout/activity_home.xml" value="0.14270833333333333" />
         <entry key="..\:/Users/ken/AndroidStudioProjects/Cinema/app/src/main/res/layout/activity_main.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/ken/AndroidStudioProjects/Cinema/app/src/main/res/layout/fragment_registration.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/ken/AndroidStudioProjects/Cinema/app/src/main/res/layout/fragment_sign_in.xml" value="0.25" />
       </map>
     </option>
   </component>

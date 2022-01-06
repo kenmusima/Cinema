@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Cinema</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="login">LogIn</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="signin">SignIn</string>
 </resources>
