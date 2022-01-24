@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -18,7 +20,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
-        viewBinding = true
+        viewBinding true
     }
 
     buildTypes {
@@ -38,16 +40,26 @@ android {
 
 dependencies {
 
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:29.0.3')
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.google.android.material:material:1.6.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+
     // Navigation component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    kapt ("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    //Datastore
+    implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

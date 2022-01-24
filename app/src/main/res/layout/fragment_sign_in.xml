@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/md_theme_light_primaryContainer"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragment.SignInFragment">
 
@@ -25,12 +23,12 @@
         android:id="@+id/materialTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_margin="16dp"
         android:fontFamily="casual"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
         android:text="@string/login"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,11 +37,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        android:padding="8dp"
+        android:layout_margin="16dp"
+        app:startIconDrawable="@drawable/ic_baseline_email_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email" />
@@ -54,35 +54,35 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:layout_margin="16dp"
         app:errorEnabled="true"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/materialCheckBox"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/remember_me"
+        android:id="@+id/progress"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"/>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/signInButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_margin="16dp"
         android:text="@string/signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/materialCheckBox"
+        app:layout_constraintTop_toBottomOf="@id/progress"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
