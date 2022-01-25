@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cinema">
         <activity
+            android:name=".ui.activity.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.HomeActivity"
             android:exported="true">
             <intent-filter>

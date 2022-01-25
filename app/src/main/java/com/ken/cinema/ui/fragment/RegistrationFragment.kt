@@ -31,6 +31,12 @@ class RegistrationFragment : Fragment() {
             var (emailValid, passwordValid) = validateFields()
             createUser(emailValid, passwordValid)
         }
+
+        binding.goToLogin.setOnClickListener {
+            val action = RegistrationFragmentDirections.actionRegistrationFragmentToSignInFragment()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -41,6 +42,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Sign in success
+                    val action = SignInFragmentDirections.actionSignInFragmentToMainActivity()
+                    findNavController().navigate(action)
 
                 } else {
                     // Sign in fails
