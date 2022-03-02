@@ -3,12 +3,11 @@ package com.ken.cinema.ui.fragment
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
@@ -29,11 +28,11 @@ class RegistrationFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         auth = Firebase.auth
         binding.register.setOnClickListener {
-            var (emailValid, passwordValid) = validateFields()
+            val (emailValid, passwordValid) = validateFields()
             createUser(emailValid, passwordValid)
         }
 
@@ -47,13 +46,11 @@ class RegistrationFragment : Fragment() {
 
 
     private fun validateFields(): Pair<Boolean, Boolean> {
-        var email = binding.emailRegistration.text.toString().trim()
-        var password = binding.passwordRegistration.text.toString().trim()
-        var confirmPassword = binding.confirmPasswordRegistration.text.toString().trim()
-        var isEmailValid: Boolean = false
-        var isPasswordValid: Boolean = false
+        val email = binding.emailRegistration.text.toString().trim()
+        val password = binding.passwordRegistration.text.toString().trim()
+        val confirmPassword = binding.confirmPasswordRegistration.text.toString().trim()
 
-        isEmailValid = if (TextUtils.isEmpty(email)) {
+        val isEmailValid: Boolean = if (TextUtils.isEmpty(email)) {
             Toast.makeText(activity, "Please enter email", Toast.LENGTH_SHORT).show()
             false
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -63,7 +60,7 @@ class RegistrationFragment : Fragment() {
             true
         }
 
-        isPasswordValid = when {
+        val isPasswordValid: Boolean = when {
             TextUtils.isEmpty(password) -> {
                 Toast.makeText(activity, "Please enter a password", Toast.LENGTH_SHORT).show()
                 false
@@ -89,8 +86,8 @@ class RegistrationFragment : Fragment() {
     private fun createUser(emailValid: Boolean, passwordValid: Boolean) {
 
         if (emailValid && passwordValid) {
-            var email = binding.emailRegistration.text.toString().trim()
-            var password = binding.passwordRegistration.text.toString().trim()
+            val email = binding.emailRegistration.text.toString().trim()
+            val password = binding.passwordRegistration.text.toString().trim()
 
             binding.progressCircular.visibility = View.VISIBLE
             auth.createUserWithEmailAndPassword(email, password)
@@ -108,7 +105,7 @@ class RegistrationFragment : Fragment() {
 
                     }
                 }
-                .addOnFailureListener { it ->
+                .addOnFailureListener {
                     Snackbar.make(binding.root,it.message.toString(),Snackbar.LENGTH_SHORT).show()
                 }
         }

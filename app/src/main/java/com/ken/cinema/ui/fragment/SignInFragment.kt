@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -26,7 +27,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         auth = Firebase.auth
 
@@ -43,8 +44,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
 
     private fun signIn() {
-        var email = binding.signInEmail.editText?.text.toString().trim()
-        var password = binding.signInPassword.editText?.text.toString().trim()
+        val email = binding.signInEmail.editText?.text.toString().trim()
+        val password = binding.signInPassword.editText?.text.toString().trim()
 
         binding.signInButton.visibility = View.INVISIBLE
         binding.progress.visibility = View.VISIBLE
@@ -64,6 +65,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     Toast.makeText(activity?.applicationContext, "Incorrect password or email.", Toast.LENGTH_SHORT)
                         .show()
                 }
+            }.addOnFailureListener {
+                Snackbar.make(binding.root,it.message.toString(),Snackbar.LENGTH_SHORT).show()
             }
     }
 

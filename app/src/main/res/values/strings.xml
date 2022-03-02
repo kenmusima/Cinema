@@ -14,4 +14,21 @@
     <string name="title_sample">Title : Spiderman No Way Home</string>
     <string name="seats_number">No of seats selected <b>%1$d</b></string>
     <string name="selected_date">Selected Date is : %1$s </string>
+    <string name="select_movie">Select Movie</string>
+    <string name="overview">Overview :</string>
+    <string name="title">Title:</string>
+    <string name="image_of_movie_chosen">Image of movie chosen</string>
+    <string name="vote_average">Vote Average :</string>
+    <string name="release_date">Release Date :</string>
+    <string name="email_cinema">Email : cinema@test.com</string>
+    <string name="phone_number_cinema">Phone Number : +24547000000</string>
+    <string name="submit">Submit</string>
+    <string name="optional_contact_detail">Optional : Contact Detail</string>
+    <string name="type_your_feedback">Type your feedback</string>
+    <string-array name="opening_hous">
+        <item>Opening Hours: 8:00am-8:00pm</item>
+        <item>Sunday Excluded</item>
+    </string-array>
+
+    <string name="opening_hours">Opening Hours: 8:00am-8:00pm \n\t\t\t\t\t\t\t\t\t\tSunday Excluded</string>
 </resources>
