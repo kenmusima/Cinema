@@ -96,13 +96,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
+            android:id="@+id/progress_circular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:visibility="gone"
-            style="@style/Widget.MaterialComponents.CircularProgressIndicator"
-            android:id="@+id/progress_circular"
-            android:layout_gravity="center_horizontal"/>
-
+            tools:visibility="visible"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/register"
             android:layout_width="match_parent"

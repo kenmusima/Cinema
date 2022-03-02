@@ -10,4 +10,8 @@
     <string name="remember_me">Remember Me</string>
     <string name="signin">SignIn</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="overview_sample">Peter Parker is unmasked and no longer able to separate his normal life from the high-stakes of being a super-hero. When he asks for help from Doctor Strange the stakes become even more dangerous, forcing him to discover what it truly means to be Spider-Man.</string>
+    <string name="title_sample">Title : Spiderman No Way Home</string>
+    <string name="seats_number">No of seats selected <b>%1$d</b></string>
+    <string name="selected_date">Selected Date is : %1$s </string>
 </resources>

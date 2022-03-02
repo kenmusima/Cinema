@@ -10,22 +10,27 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.ken.cinema.databinding.FragmentRegistrationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegistrationFragment : Fragment() {
 
-    private lateinit var binding: FragmentRegistrationBinding
+    private var _binding: FragmentRegistrationBinding? = null
     private lateinit var auth: FirebaseAuth
+
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRegistrationBinding.inflate(inflater, container, false)
+        _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
         auth = Firebase.auth
         binding.register.setOnClickListener {
             var (emailValid, passwordValid) = validateFields()
@@ -98,11 +103,19 @@ class RegistrationFragment : Fragment() {
                     } else {
                         // Sign in fails
                         binding.progressCircular.visibility = View.GONE
-                        Toast.makeText(activity, "User Registration Failed.", Toast.LENGTH_SHORT)
+                        Toast.makeText(activity?.applicationContext, "User Registration Failed.", Toast.LENGTH_SHORT)
                             .show()
 
                     }
                 }
+                .addOnFailureListener { it ->
+                    Snackbar.make(binding.root,it.message.toString(),Snackbar.LENGTH_SHORT).show()
+                }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -9,23 +9,90 @@
         android:id="@+id/signInFragment"
         android:name="com.ken.cinema.ui.fragment.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_signInFragment_to_mainActivity"
-            app:destination="@id/mainActivity" />
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.ken.cinema.ui.fragment.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.ken.cinema.ui.activity.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.ken.cinema.ui.fragment.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.ken.cinema.ui.fragment.MovieDetailFragment"
+        android:label="fragment_movie_details"
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="film"
+            app:argType="com.ken.cinema.data.model.Film" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_seatFragment"
+            app:destination="@id/seatFragment" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/seatFragment"
+        android:name="com.ken.cinema.ui.fragment.SeatFragment"
+        android:label="fragment_seat"
+        tools:layout="@layout/fragment_seat" >
+        <argument
+            android:name="film"
+            app:argType="com.ken.cinema.data.model.Film" />
+        <action
+            android:id="@+id/action_seatFragment_to_dateFragment"
+            app:destination="@id/dateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dateFragment"
+        android:name="com.ken.cinema.ui.fragment.DateFragment"
+        android:label="fragment_date"
+        tools:layout="@layout/fragment_date" >
+        <argument
+            android:name="seat"
+            app:argType="integer" />
+        <argument
+            android:name="film"
+            app:argType="com.ken.cinema.data.model.Film" />
+        <action
+            android:id="@+id/action_dateFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.ken.cinema.ui.fragment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="date"
+            app:argType="long" />
+        <argument
+            android:name="film"
+            app:argType="com.ken.cinema.data.model.Film" />
+        <argument
+            android:name="seat"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_paymentFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
 </navigation>
