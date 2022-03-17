@@ -78,7 +78,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
     //MpesaDaraja
-    implementation 'com.androidstudy:daraja:1.0.2'
+    implementation 'com.androidstudy:daraja:2.0.0'
 
     //Datastore
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha08"

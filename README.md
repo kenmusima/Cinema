@@ -1,6 +1,6 @@
 # Cinema (In Progress)
 CinemaApp is an application that uses a section of Android Jetpack libraries and also Retrofit to display data from 
-[TheMovieDB](https://www.themoviedb.org/documentation/api) API in terms of popular movies for booking.
+[TheMovieDB](https://www.themoviedb.org/documentation/api) API in terms of popular movies for booking using [MPESA](https://en.wikipedia.org/wiki/M-Pesa).
 
 ### Prerequisites
 To setup the project add the following secret and keys in `local.properties` file:
@@ -30,13 +30,23 @@ To run the Project build using Android Studio or Intelli J and all the required 
 
 The project uses MVVM architecture pattern.
 
-## Libraries 
+## Libraries Used
 
-* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/) - Manage UI related data in a lifecycle conscious way and act as a channel between use cases and ui
-* [ViewBinding](https://developer.android.com/topic/libraries/data-binding) - support library that allows binding of UI components in layouts to data sources,binds character details and search results to UI
-* [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started) - Android Jetpack's Navigation component helps in implementing
-navigation between fragments
+* [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel/) - Store and manage UI-related data in a lifecycle conscious way.
+* [ViewBinding](https://developer.android.com/topic/libraries/data-binding) - Library that helps write code that interacts with views more easily.
+* [Navigation Component](https://developer.android.com/guide/navigation/navigation-getting-started) - Android Jetpack's Navigation component helps in implementing navigation between fragments.
+* [Retrofit](https://square.github.io/retrofit/) - To access the Rest Api.
 * [Dagger Hilt](https://developer.android.com/jetpack/androidx/releases/hilt) - For Dependency Injection.
-* [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview?hl=in) - Allow pagination of the Data.
-* [Retrofit](https://square.github.io/retrofit/) - To access the Rest Api
-* [Datastore](https://developer.android.com/topic/libraries/architecture/datastore) - To store data in key value pairs, in this case to store boolean if the disclaimer dialog is shown or not
+* [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview?hl=in) - Allow pagination of the data.
+* [Datastore](https://developer.android.com/topic/libraries/architecture/datastore) - To store seat IDS in key value pairs.
+* [MpesaDaraja](https://github.com/jumaallan/android-mpesa-api) - Mobile Money transaction api.
+* [GOOGLE CLOUD FUNCTIONS](https://cloud.google.com/functions/) - functions as a service (FaaS) to run your code with zero server management.
+
+## UI
+|<img src="screenshots/register_ui.png" width=200/>|<img src="screenshots/signin_ui.png" width=200/>|<img src="screenshots/booking_ui.png" width=200/>|
+|:----:|:----:|:----:|
+|<img src="screenshots/movie_screenshot.png" width=200/>|<img src="screenshots/contact_ui.png" width=200/>|<img src="screenshots/selectedmovie_ui.png" width=200/>|
+|<img src="screenshots/seats_ui.png" width=200/>|<img src="screenshots/pickdate_ui.png" width=200/>|<img src="screenshots/payment_ui.png" width=200/>
+
+## CREDIT FOR ICON
+<a target="_blank" href="https://icons8.com/icon/82675/mobile-payment">Mobile Payment</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
