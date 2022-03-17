@@ -1,11 +1,15 @@
 package com.ken.cinema.ui.fragment
 
-import android.graphics.Bitmap
+import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
@@ -16,7 +20,6 @@ import com.androidstudy.daraja.model.LNMExpress
 import com.androidstudy.daraja.model.LNMResult
 import com.androidstudy.daraja.util.Env
 import com.androidstudy.daraja.util.TransactionType
-import com.bumptech.glide.Glide
 import com.google.firebase.messaging.FirebaseMessaging
 import com.ken.cinema.BuildConfig
 import com.ken.cinema.BuildConfig.CALLBACK_URL
@@ -26,6 +29,7 @@ import com.ken.cinema.data.model.Film
 import com.ken.cinema.databinding.FragmentPaymentBinding
 import com.ken.cinema.ui.viewmodel.PaymentViewModel
 import com.ken.cinema.util.MpesaListener
+import com.ken.cinema.util.convertLongToTime
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
@@ -50,6 +54,8 @@ class PaymentFragment : Fragment(R.layout.fragment_payment),MpesaListener  {
         lateinit var mpesaListener: MpesaListener
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
+    @SuppressLint("StringFormatMatches")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPaymentBinding.bind(view)
@@ -76,6 +82,7 @@ class PaymentFragment : Fragment(R.layout.fragment_payment),MpesaListener  {
             }
         )
 
+        binding.bookingDetails.text = getString(R.string.payment_details,film.title,seat,date.convertLongToTime(),price)
         binding.payButton.setOnClickListener {
 
             val mobileNumber = binding.phoneNumber.editText?.text?.trim().toString()

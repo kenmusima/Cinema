@@ -29,6 +29,7 @@ class OrderAdapter : ListAdapter<Ticket, OrderAdapter.OrderViewHolder>(DiffUtilC
 
             Glide.with(binding.root)
                 .load("${IMAGE_PREFIX_URL.plus(ticket.image)}")
+                .centerCrop()
                 .placeholder(R.drawable.loading_animation)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

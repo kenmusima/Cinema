@@ -25,10 +25,6 @@
     <string name="submit">Submit</string>
     <string name="optional_contact_detail">Optional : Contact Detail</string>
     <string name="type_your_feedback">Type your feedback</string>
-    <string-array name="opening_hous">
-        <item>Opening Hours: 8:00am-8:00pm</item>
-        <item>Sunday Excluded</item>
-    </string-array>
-
+    <string name="payment_details">Booking Details:\n\tMovie Title : %1$s \n\tNumber of Seats : %2$d \n\tDate Picked: %3$s \n\tPrice: %4$d</string>
     <string name="opening_hours">Opening Hours: 8:00am-8:00pm \n\t\t\t\t\t\t\t\t\t\tSunday Excluded</string>
 </resources>
