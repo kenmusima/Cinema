@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    tools:context=".ui.fragment.SeatFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/selectSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Seats Selection"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/selectSeatDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="Select your desired seat below"
+                app:layout_constraintEnd_toEndOf="@id/selectSeat"
+                app:layout_constraintStart_toStartOf="@id/selectSeat"
+                app:layout_constraintTop_toBottomOf="@id/selectSeat" />
+
+            <TextView
+                android:id="@+id/seatsSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Number of seats selected 0"
+                app:layout_constraintEnd_toEndOf="@id/selectSeatDescription"
+                app:layout_constraintStart_toStartOf="@id/selectSeatDescription"
+                app:layout_constraintTop_toBottomOf="@id/selectSeatDescription" />
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seatsSelected">
+
+                <GridLayout
+                    android:id="@+id/layout_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="8"
+                    android:rowCount="5"
+                    android:useDefaultMargins="true"
+                    android:alignmentMode="alignBounds">
+
+                    <ImageView
+                        android:id="@+id/selectableChair1"
+                        android:layout_width="32dp"
+
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair3"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair4"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair5"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair6"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair7"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair8"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair9"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+
+                    <ImageView
+                        android:id="@+id/selectableChair10"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair11"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair12"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair13"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair14"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair15"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair16"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair17"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair18"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+
+                    <ImageView
+                        android:id="@+id/selectableChair19"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair20"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair21"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair22"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair23"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair24"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair25"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair26"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair27"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair28"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair29"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair30"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair31"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair32"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair33"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair34"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair35"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair36"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+
+                    <ImageView
+                        android:id="@+id/selectableChair37"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair38"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair39"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair40"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair41"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair42"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair43"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair44"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+
+                    <ImageView
+                        android:id="@+id/selectableChair45"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+                    <ImageView
+                        android:id="@+id/selectableChair46"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+                    <ImageView
+                        android:id="@+id/selectableChair47"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+                    <ImageView
+                        android:id="@+id/selectableChair48"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        app:srcCompat="@drawable/image_selected" />
+                </GridLayout>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/selectedSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Select Chair"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/linearLayout"
+                app:layout_constraintStart_toStartOf="@id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
