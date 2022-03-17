@@ -1,12 +1,16 @@
 package com.ken.cinema.di
 
+import android.content.Context
 import com.ken.cinema.data.network.ApiClient
+import com.ken.cinema.data.repository.DataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -25,4 +29,9 @@ object AppModule {
     @Singleton
     fun provideApiClient(retrofit: Retrofit) : ApiClient =
         retrofit.create(ApiClient::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDataStore(@ApplicationContext context: Context): DataStore =
+        DataStore(context.applicationContext)
 }

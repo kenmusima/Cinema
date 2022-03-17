@@ -8,15 +8,14 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/shapeableImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="240dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/imageView"
-        app:srcCompat="@drawable/movie"
+        app:srcCompat="@drawable/img_2"
         tools:ignore="VectorDrawableCompat" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -24,9 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:fontFamily="casual"
         android:text="@string/login"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />

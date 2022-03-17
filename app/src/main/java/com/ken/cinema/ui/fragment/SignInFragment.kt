@@ -1,6 +1,7 @@
 package com.ken.cinema.ui.fragment
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,27 +48,36 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         val email = binding.signInEmail.editText?.text.toString().trim()
         val password = binding.signInPassword.editText?.text.toString().trim()
 
-        binding.signInButton.visibility = View.INVISIBLE
-        binding.progress.visibility = View.VISIBLE
+        if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
+            Snackbar.make(binding.root,"Empty Credentials Not Accepted",Snackbar.LENGTH_SHORT).show()
+        }
+        else {
+            binding.signInButton.visibility = View.INVISIBLE
+            binding.progress.visibility = View.VISIBLE
 
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    // Sign in success
-                    val action = SignInFragmentDirections.actionSignInFragmentToMainFragment()
-                    findNavController().navigate(action)
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success
+                        val action = SignInFragmentDirections.actionSignInFragmentToMainFragment()
+                        findNavController().navigate(action)
 
 
-                } else {
-                    // Sign in fails
-                    binding.progress.visibility = View.INVISIBLE
-                    binding.signInButton.visibility = View.VISIBLE
-                    Toast.makeText(activity?.applicationContext, "Incorrect password or email.", Toast.LENGTH_SHORT)
-                        .show()
+                    } else {
+                        // Sign in fails
+                        binding.progress.visibility = View.INVISIBLE
+                        binding.signInButton.visibility = View.VISIBLE
+                        Toast.makeText(
+                            activity?.applicationContext,
+                            "Incorrect password or email.",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                }.addOnFailureListener {
+                    Snackbar.make(binding.root, it.message.toString(), Snackbar.LENGTH_SHORT).show()
                 }
-            }.addOnFailureListener {
-                Snackbar.make(binding.root,it.message.toString(),Snackbar.LENGTH_SHORT).show()
-            }
+        }
     }
 
     override fun onDestroyView() {
