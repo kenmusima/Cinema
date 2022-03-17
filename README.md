@@ -1,9 +1,30 @@
 # Cinema (In Progress)
-The App wil use a set of Android Jetpack libraries plus Retrofit to dispay data from REST API.
+CinemaApp is an application that uses a section of Android Jetpack libraries and also Retrofit to display data from 
+[TheMovieDB](https://www.themoviedb.org/documentation/api) API in terms of popular movies for booking.
 
 ### Prerequisites
+To setup the project add the following secret and keys in `local.properties` file:
+MovieDB API Key
+```yaml
+apiKey=""
+```
+Google Maps API Key
+```yaml
+MAPS_API_KEY=""
+```
+Mpesa API Consumer Key, Consumer Secret, Passkey,Business ShortCode
+```yaml
+CONSUMER_KEY=""
+CONSUMER_SECRET=""
+PASSKEY=""
+BUSINESS_SHORT_CODE=""
+```
+Google Functions Callback Url
+```yaml
+CALLBACK_URL=""
+```
 
-Add the Project to Android Studio and then build. All the required dependencies will be downloaded and installed.
+To run the Project build using Android Studio or Intelli J and all the required dependencies will be downloaded and installed.
 
 ## Architecture
 
