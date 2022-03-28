@@ -6,8 +6,30 @@ on:
 
 ## 2
 jobs:
+  ## 3
+  unit_tests:
+    needs: [setup-localproperties]
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Unit tests
+        run: ./gradlew test
+  ## 4
+  android_tests:
+    needs: [setup-localproperties]
+    runs-on: [ macos-latest ]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Instrumentation Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 27
+          script: ./gradlew connectedAndroidTest
 
   build:
+     needs: [ unit_tests, android_tests ]
      runs-on: ubuntu-latest
      steps:
        # 1
@@ -70,35 +92,37 @@ jobs:
           cache: gradle
       - name: Access MovieDB API Key
         env:
-          apiKey: ${{secrets.apiKey}}
-        run: echo apiKey=\"$apiKey\" >> ./local.properties
+          apiKey: ${{ secrets.apiKey }}
+        run: echo apiKey=\"$apiKey\" > ./local.properties
 
       - name: Access GoogleMaps API Key
         env:
-          MAPS_API_KEY: ${{secrets.MAPS_API_KEY}}
-        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" >> ./local.properties
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
+        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
 
       - name: Access Mpesa consumer Key
         env:
-          CONSUMER_KEY: ${{secrets.CONSUMER_KEY}}
-        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\" >> ./local.properties
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\" > ./local.properties
 
       - name: Access Mpesa consumer secret
         env:
-          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET}}
-        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\" >> ./local.properties
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\" > ./local.properties
 
       - name: Access Mpesa passkey
         env:
-          PASSKEY: ${{ secrets.PASSKEY}}
-        run: echo PASSKEY=\"$PASSKEY\" >> ./local.properties
+          PASSKEY: ${{ secrets.PASSKEY }}
+        run: echo PASSKEY=\"$PASSKEY\" > ./local.properties
 
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
           BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
-        run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\" >> ./local.properties
+        run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\" > ./local.properties
 
       - name: Access Google Functions callbackurl
         env:
           CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
-        run: echo CALLBACK_URL=\"$CALLBACK_URL\" >> ./local.properties
+        run: echo CALLBACK_URL=\"$CALLBACK_URL\" > ./local.properties
+      - name: Build with Gradle
+        run: ./gradlew build
