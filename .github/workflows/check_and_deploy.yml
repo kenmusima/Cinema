@@ -125,4 +125,4 @@ jobs:
           CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
         run: echo CALLBACK_URL=\"$CALLBACK_URL\" > ./local.properties
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --stacktrace
