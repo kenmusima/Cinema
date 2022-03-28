@@ -23,6 +23,9 @@ Google Functions Callback Url
 ```yaml
 CALLBACK_URL=""
 ```
+Firebase Setup tutorial
+[Firebase Setup](https://firebase.google.com/docs/android/setup)
+[Firebase Authentication](https://firebase.google.com/docs/auth/android/password-auth)
 
 To run the Project build using Android Studio or Intelli J and all the required dependencies will be downloaded and installed.
 
@@ -40,6 +43,7 @@ The project uses MVVM architecture pattern.
 * [Paging 3](https://developer.android.com/topic/libraries/architecture/paging/v3-overview?hl=in) - Allow pagination of the data.
 * [Datastore](https://developer.android.com/topic/libraries/architecture/datastore) - To store seat IDS in key value pairs.
 * [MpesaDaraja](https://github.com/jumaallan/android-mpesa-api) - Mobile Money transaction api.
+* [Room](https://developer.android.com/training/data-storage/room) - Used as local database to store booked tickets.
 * [GOOGLE CLOUD FUNCTIONS](https://cloud.google.com/functions/) - functions as a service (FaaS) to run your code with zero server management.
 
 ## UI

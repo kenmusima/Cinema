@@ -8,6 +8,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
@@ -19,10 +21,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(): Retrofit =
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
 
     @Provides
@@ -30,6 +33,18 @@ object AppModule {
     fun provideApiClient(retrofit: Retrofit) : ApiClient =
         retrofit.create(ApiClient::class.java)
 
+    @Provides
+    @Singleton
+    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
+        .apply { level = HttpLoggingInterceptor.Level.BODY }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+        OkHttpClient
+            .Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
     @Provides
     @Singleton
     fun provideDataStore(@ApplicationContext context: Context): DataStore =
