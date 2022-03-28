@@ -42,3 +42,18 @@ jobs:
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: QA
           file: app-release-unsigned-signed.apk
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup JDK 1.8
+        uses: actions/setup-java@v2
+        with:
+          java-verison: 1.8
+          cache: gradle
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
+
+
