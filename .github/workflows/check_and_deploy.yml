@@ -115,15 +115,16 @@ jobs:
           PASSKEY: ${{ secrets.PASSKEY }}
         run: echo PASSKEY=\"$PASSKEY\"\ > ./local.properties
 
+      - name: Access Google Functions callbackurl
+        env:
+          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
+        run: echo CALLBACK_URL="$CALLBACK_URL" > ./local.properties
+
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
           BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
         run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\"\ > ./local.properties
 
-      - name: Access Google Functions callbackurl
-        env:
-          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
-        run: echo CALLBACK_URL="$CALLBACK_URL" > ./local.properties
       - name: Check file exists
         id: local
         uses: juliangruber/read-file-action@v1
