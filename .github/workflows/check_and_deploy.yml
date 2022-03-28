@@ -8,8 +8,6 @@ on:
 jobs:
   ## 3
   unit_tests:
-    needs: [setup-localproperties]
-
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2

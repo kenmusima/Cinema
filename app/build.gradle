@@ -12,7 +12,7 @@ plugins {
 android {
     compileSdk 31
 
-    def propFile = rootProject.file("./local.properties")
+    def propFile = project.rootProject.file("local.properties")
     def properties = new Properties()
     properties.load(new FileInputStream(propFile))
 
