@@ -8,6 +8,7 @@ on:
 jobs:
   ## 3
   unit_tests:
+    needs: [setup-localproperties]
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
@@ -16,6 +17,7 @@ jobs:
         run: ./gradlew test
   ## 4
   android_tests:
+    needs: [setup-localproperties]
     runs-on: [ macos-latest ]
     steps:
       - uses: actions/checkout@v2
@@ -33,38 +35,7 @@ jobs:
        # 1
        - name: Checkout code
          uses: actions/checkout@v2
-       - name: Access MovieDB API Key
-         env:
-           apiKey: ${{ secrets.apiKey}}
-         run: echo apiKey=\"$apiKey\"> ./local.properties
-       - name: Access MovieDB API Key
-         env:
-           apiKey: ${{ secrets.apiKey}}
-         run: echo apiKey=\"$apiKey\"> ./local.properties
-       - name: Access GoogleMaps API Key
-         env:
-           apiKey: ${{ secrets.MAPS_API_KEY}}
-         run: echo MAPS_API_KEY=\"$MAPS_API_KEY\"> ./local.properties
-       - name: Access Mpesa consumer Key
-         env:
-           apiKey: ${{ secrets.CONSUMER_KEY}}
-         run: echo CONSUMER_KEY=\"$CONSUMER_KEY\"> ./local.properties
-       - name: Access Mpesa consumer secret
-         env:
-           apiKey: ${{ secrets.CONSUMER_SECRET}}
-         run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\"> ./local.properties
-       - name: Access Mpesa passkey
-         env:
-           apiKey: ${{ secrets.PASSKEY}}
-         run: echo PASSKEY=\"$PASSKEY\"> ./local.properties
-       - name: Access Mpesa BUSINESS_SHORT_CODE
-         env:
-           apiKey: ${{ secrets.BUSINESS_SHORT_CODE}}
-         run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\"> ./local.properties
-       - name: Access Google Functions callbackurl
-         env:
-           apiKey: ${{ secrets.CALLBACK_URL}}
-         run: echo CALLBACK_URL=\"$CALLBACK_URL\"> ./local.properties
+
        # 2
        - name: Generate Release APK
          run: ./gradlew assembleRelease
@@ -108,3 +79,42 @@ jobs:
           groups: QA
           file: app-release-unsigned-signed.apk
 
+  setup-localproperties:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Access MovieDB API Key
+        env:
+          apiKey: ${{ secrets.apiKey}}
+        run: echo apiKey=\"$apiKey\"> ./local.properties
+
+      - name: Access GoogleMaps API Key
+        env:
+          apiKey: ${{ secrets.MAPS_API_KEY}}
+        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\"> ./local.properties
+
+      - name: Access Mpesa consumer Key
+        env:
+          apiKey: ${{ secrets.CONSUMER_KEY}}
+        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\"> ./local.properties
+
+      - name: Access Mpesa consumer secret
+        env:
+          apiKey: ${{ secrets.CONSUMER_SECRET}}
+        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\"> ./local.properties
+
+      - name: Access Mpesa passkey
+        env:
+          apiKey: ${{ secrets.PASSKEY}}
+        run: echo PASSKEY=\"$PASSKEY\"> ./local.properties
+
+      - name: Access Mpesa BUSINESS_SHORT_CODE
+        env:
+          apiKey: ${{ secrets.BUSINESS_SHORT_CODE}}
+        run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\"> ./local.properties
+
+      - name: Access Google Functions callbackurl
+        env:
+          apiKey: ${{ secrets.CALLBACK_URL}}
+        run: echo CALLBACK_URL=\"$CALLBACK_URL\"> ./local.properties
