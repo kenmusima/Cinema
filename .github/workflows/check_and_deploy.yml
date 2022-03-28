@@ -13,7 +13,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-
+      - run: touch local.properties
       - name: Unit tests
         run: ./gradlew test
   ## 4
