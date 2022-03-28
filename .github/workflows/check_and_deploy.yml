@@ -95,37 +95,37 @@ jobs:
       - name: Access MovieDB API Key
         env:
           apiKey: ${{ secrets.apiKey }}
-        run: echo -e apiKey=\"$apiKey\"\ > ./local.properties
+        run: echo -e "\napiKey=$apiKey" >> local.properties
 
       - name: Access GoogleMaps API Key
         env:
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
-        run: echo -e MAPS_API_KEY=\"$MAPS_API_KEY\"\ > ./local.properties
+        run: echo -e "\nMAPS_API_KEY=$MAPS_API_KEY" >> local.properties
 
       - name: Access Mpesa consumer Key
         env:
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-        run: echo -e CONSUMER_KEY=\"$CONSUMER_KEY\"\ > ./local.properties
+        run: echo -e "\nCONSUMER_KEY=$CONSUMER_KEY" >> local.properties
 
       - name: Access Mpesa consumer secret
         env:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-        run: echo -e CONSUMER_SECRET=\"$CONSUMER_SECRET\"\ > ./local.properties
+        run: echo -e "\nCONSUMER_SECRET=$CONSUMER_SECRET" >> local.properties
 
       - name: Access Mpesa passkey
         env:
           PASSKEY: ${{ secrets.PASSKEY }}
-        run: echo -e "\nPASSKEY=$PASSKEY" > ./local.properties
+        run: echo -e "\nPASSKEY=$PASSKEY" >> local.properties
 
       - name: Access Google Functions callbackurl
         env:
           CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
-        run: echo -e "\nCALLBACK_URL=$CALLBACK_URL" >> ./local.properties
+        run: echo -e "\nCALLBACK_URL=$CALLBACK_URL" >> local.properties
 
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
           BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
-        run: echo -e BUSINESS_SHORT_CODE="$BUSINESS_SHORT_CODE" >> ./local.properties
+        run: echo -e "\nBUSINESS_SHORT_CODE=$BUSINESS_SHORT_CODE" >> local.properties
 
       - run: cat local.properties
       - name: Check file exists
