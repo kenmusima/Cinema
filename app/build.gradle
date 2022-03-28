@@ -12,6 +12,10 @@ plugins {
 android {
     compileSdk 31
 
+    def propFile = rootProject.file("./local.properties")
+    def properties = new Properties()
+    properties.load(new FileInputStream(propFile))
+
     defaultConfig {
         applicationId "com.ken.cinema"
         minSdk 19
@@ -20,6 +24,14 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField ("String", "apiKey", properties['apiKey'])
+        buildConfigField ("String", "MAPS_API_KEY", properties['MAPS_API_KEY'])
+        buildConfigField ("String", "CONSUMER_KEY", properties['CONSUMER_KEY'])
+        buildConfigField ("String", "CONSUMER_SECRET", properties['CONSUMER_SECRET'])
+        buildConfigField ("String", "MAPS_API_KEY", properties['MAPS_API_KEY'])
+        buildConfigField ("String", "PASSKEY", properties['PASSKEY'])
+        buildConfigField ("String", "BUSINESS_SHORT_CODE", properties['BUSINESS_SHORT_CODE'])
+        buildConfigField ("String", "CALLBACK_URL", properties['CALLBACK_URL'])
     }
     buildFeatures {
         viewBinding true
