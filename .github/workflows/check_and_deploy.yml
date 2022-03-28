@@ -93,7 +93,6 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - run: touch local.properties
-        uses:
       - name: Access MovieDB API Key
         env:
           apiKey: ${{ secrets.apiKey }}
