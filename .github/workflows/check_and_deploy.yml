@@ -84,37 +84,43 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+          cache: gradle
       - name: Access MovieDB API Key
         env:
-          apiKey: ${{ secrets.apiKey}}
-        run: echo apiKey=\"$apiKey\" > ./local.properties
+          apiKey: ${{secrets.apiKey}}
+        run: echo apiKey=\"$apiKey\" >> ./local.properties
 
       - name: Access GoogleMaps API Key
         env:
-          apiKey: ${{ secrets.MAPS_API_KEY}}
-        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" > ./local.properties
+          apiKey: ${{secrets.MAPS_API_KEY}}
+        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" >> ./local.properties
 
       - name: Access Mpesa consumer Key
         env:
-          apiKey: ${{ secrets.CONSUMER_KEY}}
-        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\" > ./local.properties
+          apiKey: ${{secrets.CONSUMER_KEY}}
+        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\" >> ./local.properties
 
       - name: Access Mpesa consumer secret
         env:
           apiKey: ${{ secrets.CONSUMER_SECRET}}
-        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\" > ./local.properties
+        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\" >> ./local.properties
 
       - name: Access Mpesa passkey
         env:
           apiKey: ${{ secrets.PASSKEY}}
-        run: echo PASSKEY=\"$PASSKEY\" > ./local.properties
+        run: echo PASSKEY=\"$PASSKEY\" >> ./local.properties
 
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
-          apiKey: ${{ secrets.BUSINESS_SHORT_CODE}}
-        run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\" > ./local.properties
+          apiKey: ${{ secrets.BUSINESS_SHORT_CODE }}
+        run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\" >> ./local.properties
 
       - name: Access Google Functions callbackurl
         env:
-          apiKey: ${{ secrets.CALLBACK_URL}}
-        run: echo CALLBACK_URL=\"$CALLBACK_URL\" > ./local.properties
+          apiKey: ${{ secrets.CALLBACK_URL }}
+        run: echo CALLBACK_URL=\"$CALLBACK_URL\" >> ./local.properties
