@@ -9,10 +9,11 @@ jobs:
   ## 3
   unit_tests:
     needs: [setup-localproperties]
+
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v2
-
+      - run: cat local.properties
       - name: Unit tests
         run: ./gradlew test
   ## 4
