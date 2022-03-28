@@ -91,25 +91,26 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
+      - run: touch local.properties
       - name: Access MovieDB API Key
         env:
           apiKey: ${{ secrets.apiKey }}
-        run: echo apiKey=\"$apiKey\"\ > ./local.properties
+        run: echo -e apiKey=\"$apiKey\"\ > ./local.properties
 
       - name: Access GoogleMaps API Key
         env:
           MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
-        run: echo MAPS_API_KEY=\"$MAPS_API_KEY\"\ > ./local.properties
+        run: echo -e MAPS_API_KEY=\"$MAPS_API_KEY\"\ > ./local.properties
 
       - name: Access Mpesa consumer Key
         env:
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-        run: echo CONSUMER_KEY=\"$CONSUMER_KEY\"\ > ./local.properties
+        run: echo -e CONSUMER_KEY=\"$CONSUMER_KEY\"\ > ./local.properties
 
       - name: Access Mpesa consumer secret
         env:
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-        run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\"\ > ./local.properties
+        run: echo -e CONSUMER_SECRET=\"$CONSUMER_SECRET\"\ > ./local.properties
 
       - name: Access Mpesa passkey
         env:
