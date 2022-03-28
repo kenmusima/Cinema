@@ -123,6 +123,11 @@ jobs:
       - name: Access Google Functions callbackurl
         env:
           CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
-        run: echo CALLBACK_URL=\"$CALLBACK_URL\" > ./local.properties
-      - name: Build with Gradle
-        run: ./gradlew build --stacktrace
+        run: echo CALLBACK_URL=\"$CALLBACK_URL"\ > ./local.properties
+      - name: Check file exists
+        id: local
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./local.properties
+      - name: Echo local.properties
+        run: echo "${{ steps.local.outputs.content }}"
