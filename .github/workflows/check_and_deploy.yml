@@ -97,30 +97,30 @@ jobs:
 
       - name: Access GoogleMaps API Key
         env:
-          apiKey: ${{secrets.MAPS_API_KEY}}
+          MAPS_API_KEY: ${{secrets.MAPS_API_KEY}}
         run: echo MAPS_API_KEY=\"$MAPS_API_KEY\" >> ./local.properties
 
       - name: Access Mpesa consumer Key
         env:
-          apiKey: ${{secrets.CONSUMER_KEY}}
+          CONSUMER_KEY: ${{secrets.CONSUMER_KEY}}
         run: echo CONSUMER_KEY=\"$CONSUMER_KEY\" >> ./local.properties
 
       - name: Access Mpesa consumer secret
         env:
-          apiKey: ${{ secrets.CONSUMER_SECRET}}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET}}
         run: echo CONSUMER_SECRET=\"$CONSUMER_SECRET\" >> ./local.properties
 
       - name: Access Mpesa passkey
         env:
-          apiKey: ${{ secrets.PASSKEY}}
+          PASSKEY: ${{ secrets.PASSKEY}}
         run: echo PASSKEY=\"$PASSKEY\" >> ./local.properties
 
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
-          apiKey: ${{ secrets.BUSINESS_SHORT_CODE }}
+          BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
         run: echo BUSINESS_SHORT_CODE=\"$BUSINESS_SHORT_CODE\" >> ./local.properties
 
       - name: Access Google Functions callbackurl
         env:
-          apiKey: ${{ secrets.CALLBACK_URL }}
+          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
         run: echo CALLBACK_URL=\"$CALLBACK_URL\" >> ./local.properties
