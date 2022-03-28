@@ -124,7 +124,7 @@ jobs:
       - name: Access Mpesa BUSINESS_SHORT_CODE
         env:
           BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
-        run: echo -e BUSINESS_SHORT_CODE="$BUSINESS_SHORT_CODE" > ./local.properties
+        run: echo -e BUSINESS_SHORT_CODE="$BUSINESS_SHORT_CODE" >> ./local.properties
 
       - run: cat local.properties
       - name: Check file exists
