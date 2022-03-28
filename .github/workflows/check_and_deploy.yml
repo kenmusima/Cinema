@@ -12,8 +12,10 @@ jobs:
 
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
       - run: touch local.properties
+      - uses: actions/checkout@v2
+        with:
+          clean: false
       - name: Unit tests
         run: ./gradlew test
   ## 4
@@ -92,6 +94,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
       - run: touch local.properties
+        uses:
       - name: Access MovieDB API Key
         env:
           apiKey: ${{ secrets.apiKey }}
