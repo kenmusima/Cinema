@@ -12,10 +12,9 @@ jobs:
 
     runs-on: [ubuntu-latest]
     steps:
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
-      - name: Look for gradlew
-        run: find / -type f -name "gradlew"
+      - uses: actions/checkout@v2
+        with:
+          clean: 'false'
       - name: Unit tests
         run: ./gradlew test
   ## 4
@@ -23,6 +22,9 @@ jobs:
     needs: [setup-localproperties]
     runs-on: [ macos-latest ]
     steps:
+      - uses: actions/checkout@v2
+        with:
+          clean: 'false'
       - name: Instrumentation Tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
