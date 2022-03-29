@@ -12,6 +12,8 @@ jobs:
 
     runs-on: [ubuntu-latest]
     steps:
+      - name: Look for gradlew
+        run: find / -type f -name "gradlew"
       - name: Unit tests
         run: ./gradlew test
   ## 4
