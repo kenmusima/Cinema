@@ -1,5 +1,5 @@
 ## 1
-name: Test and deploy
+name: Check and deploy
 
 on:
   push:
@@ -7,38 +7,31 @@ on:
 ## 2
 jobs:
   ## 3
-  unit_tests:
-    needs: [setup-localproperties]
-
-    runs-on: [ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          clean: 'false'
-      - name: Unit tests
-        run: ./gradlew test
-  ## 4
-  android_tests:
-    needs: [setup-localproperties]
-    runs-on: [ macos-latest ]
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          clean: 'false'
-      - name: Instrumentation Tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 27
-          script: ./gradlew connectedAndroidTest
-
   build:
-     needs: [ unit_tests, android_tests ]
+     needs: [ setup ]
      runs-on: ubuntu-latest
+     env:
+       BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
+       CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
+       PASSKEY: ${{ secrets.PASSKEY }}
+       CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+       CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+       MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
+       apiKey: ${{ secrets.apiKey }}
      steps:
        # 1
        - name: Checkout code
          uses: actions/checkout@v2
 
+       - run: touch local.properties
+       - run: echo -e "\nBUSINESS_SHORT_CODE=$BUSINESS_SHORT_CODE" >> local.properties
+       - run: echo -e "\nCALLBACK_URL=$CALLBACK_URL" >> local.properties
+       - run: echo -e "\nPASSKEY=$PASSKEY" >> local.properties
+       - run: echo -e "\nCONSUMER_SECRET=$CONSUMER_SECRET" >> local.properties
+       - run: echo -e "\nCONSUMER_KEY=$CONSUMER_KEY" >> local.properties
+       - run: echo -e "\nMAPS_API_KEY=$MAPS_API_KEY" >> local.properties
+       - run: echo -e "\napiKey=$apiKey" >> local.properties
+       - run: cat local.properties
        # 2
        - name: Generate Release APK
          run: ./gradlew assembleRelease
@@ -82,7 +75,7 @@ jobs:
           groups: QA
           file: app-release-unsigned-signed.apk
 
-  setup-localproperties:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -93,47 +86,3 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: gradle
-      - run: touch local.properties
-      - name: Access MovieDB API Key
-        env:
-          apiKey: ${{ secrets.apiKey }}
-        run: echo -e "\napiKey=$apiKey" >> local.properties
-
-      - name: Access GoogleMaps API Key
-        env:
-          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
-        run: echo -e "\nMAPS_API_KEY=$MAPS_API_KEY" >> local.properties
-
-      - name: Access Mpesa consumer Key
-        env:
-          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-        run: echo -e "\nCONSUMER_KEY=$CONSUMER_KEY" >> local.properties
-
-      - name: Access Mpesa consumer secret
-        env:
-          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
-        run: echo -e "\nCONSUMER_SECRET=$CONSUMER_SECRET" >> local.properties
-
-      - name: Access Mpesa passkey
-        env:
-          PASSKEY: ${{ secrets.PASSKEY }}
-        run: echo -e "\nPASSKEY=$PASSKEY" >> local.properties
-
-      - name: Access Google Functions callbackurl
-        env:
-          CALLBACK_URL: ${{ secrets.CALLBACK_URL }}
-        run: echo -e "\nCALLBACK_URL=$CALLBACK_URL" >> local.properties
-
-      - name: Access Mpesa BUSINESS_SHORT_CODE
-        env:
-          BUSINESS_SHORT_CODE: ${{ secrets.BUSINESS_SHORT_CODE }}
-        run: echo -e "\nBUSINESS_SHORT_CODE=$BUSINESS_SHORT_CODE" >> local.properties
-
-      - run: cat local.properties
-      - name: Check file exists
-        id: local
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./local.properties
-      - name: Echo local.properties
-        run: echo "${{ steps.local.outputs.content }}"
