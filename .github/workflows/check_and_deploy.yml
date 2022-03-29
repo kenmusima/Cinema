@@ -7,9 +7,26 @@ on:
 ## 2
 jobs:
   ## 3
+  unit_tests:
+    needs: [setup-localproperties]
+
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Unit tests
+        run: ./gradlew test
+  ## 4
+  android_tests:
+    needs: [setup-localproperties]
+    runs-on: [ macos-latest ]
+    steps:
+      - name: Instrumentation Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 27
+          script: ./gradlew connectedAndroidTest
 
   build:
-     needs: [ setup-localproperties ]
+     needs: [ unit_tests, android_tests ]
      runs-on: ubuntu-latest
      steps:
        # 1
@@ -114,4 +131,3 @@ jobs:
           path: ./local.properties
       - name: Echo local.properties
         run: echo "${{ steps.local.outputs.content }}"
-      - run: ./gradlew test
