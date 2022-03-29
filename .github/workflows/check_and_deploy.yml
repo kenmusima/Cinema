@@ -23,7 +23,8 @@ jobs:
        # 1
        - name: Checkout code
          uses: actions/checkout@v2
-
+       - name: Create file
+         run: cat /home/runner/work/Cinema/Cinema/app/google-services.json | base64
        - run: touch local.properties
        - run: echo -e "\nBUSINESS_SHORT_CODE=$BUSINESS_SHORT_CODE" >> local.properties
        - run: echo -e "\nCALLBACK_URL=$CALLBACK_URL" >> local.properties
