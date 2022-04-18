@@ -2,4 +2,14 @@
 <resources>
     <dimen name="dimension_8">8dp</dimen>
     <dimen name="dimension_16">16dp</dimen>
+    <dimen name="dimension_200">200dp</dimen>
+    <dimen name="dimension_40">40dp</dimen>
+    <dimen name="dimension_150">150dp</dimen>
+    <dimen name="dimension_100">100dp</dimen>
+    <dimen name="dimension_32">32dp</dimen>
+    <dimen name="dimension_10">10dp</dimen>
+    <dimen name="dimension_24">24dp</dimen>
+    <dimen name="dimension_12">12dp</dimen>
+    <dimen name="dimension_2">2dp</dimen>
+    <dimen name="dimension_60">60dp</dimen>
 </resources>

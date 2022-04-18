@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+    android:focusable="true"
     tools:context=".ui.fragment.SeatFragment">
 
     <ScrollView
@@ -13,7 +14,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/selectSeat"
@@ -22,7 +23,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Seats Selection"
+                android:text="@string/seats_selection_title"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="Select your desired seat below"
+                android:text="@string/select_seat_description"
                 app:layout_constraintEnd_toEndOf="@id/selectSeat"
                 app:layout_constraintStart_toStartOf="@id/selectSeat"
                 app:layout_constraintTop_toBottomOf="@id/selectSeat" />
@@ -46,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Number of seats selected 0"
+                android:text="@string/number_of_seats_selected"
                 app:layout_constraintEnd_toEndOf="@id/selectSeatDescription"
                 app:layout_constraintStart_toStartOf="@id/selectSeatDescription"
                 app:layout_constraintTop_toBottomOf="@id/selectSeatDescription" />
@@ -69,64 +70,73 @@
                     android:id="@+id/layout_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:alignmentMode="alignBounds"
                     android:columnCount="8"
                     android:rowCount="5"
                     android:useDefaultMargins="true"
-                    android:alignmentMode="alignBounds">
+                    tools:ignore="UselessParent">
 
                     <ImageView
                         android:id="@+id/selectableChair1"
                         android:layout_width="32dp"
-
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_1"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair2"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_2"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair3"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_3"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair4"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_4"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair5"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_5"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair6"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_6"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair7"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_7"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair8"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_8"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair9"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_9"
                         app:srcCompat="@drawable/image_selected" />
 
 
@@ -134,54 +144,63 @@
                         android:id="@+id/selectableChair10"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_10"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair11"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_11"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair12"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_12"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair13"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_13"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair14"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_14"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair15"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_15"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair16"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_16"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair17"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_17"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair18"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_18"
                         app:srcCompat="@drawable/image_selected" />
 
 
@@ -189,108 +208,126 @@
                         android:id="@+id/selectableChair19"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_19"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair20"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_20"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair21"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_21"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair22"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_22"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair23"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_23"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair24"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_24"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair25"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_25"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair26"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_26"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair27"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_27"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair28"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_28"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair29"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_29"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair30"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_30"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair31"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_31"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair32"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_32"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair33"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_33"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair34"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_34"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair35"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_35"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair36"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_36"
                         app:srcCompat="@drawable/image_selected" />
 
 
@@ -298,69 +335,84 @@
                         android:id="@+id/selectableChair37"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_37"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair38"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_38"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair39"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_39"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair40"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_40"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair41"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_41"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair42"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_42"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair43"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_43"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair44"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_44"
                         app:srcCompat="@drawable/image_selected" />
 
                     <ImageView
                         android:id="@+id/selectableChair45"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_45"
                         app:srcCompat="@drawable/image_selected" />
+
                     <ImageView
                         android:id="@+id/selectableChair46"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_46"
                         app:srcCompat="@drawable/image_selected" />
+
                     <ImageView
                         android:id="@+id/selectableChair47"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_47"
                         app:srcCompat="@drawable/image_selected" />
+
                     <ImageView
                         android:id="@+id/selectableChair48"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
+                        android:contentDescription="@string/seat_48"
                         app:srcCompat="@drawable/image_selected" />
                 </GridLayout>
             </LinearLayout>
@@ -371,7 +423,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="Select Chair"
+                android:text="@string/select_chair_button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/linearLayout"
                 app:layout_constraintStart_toStartOf="@id/linearLayout"
