@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     tools:context=".ui.fragment.OrderFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,16 @@
         android:paddingTop="@dimen/dimension_8"
         android:paddingEnd="@dimen/dimension_8"
         android:paddingBottom="@dimen/dimension_8"
+
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="1"
         tools:listitem="@layout/list_item_ticket" />
+
+    <ImageView
+        android:id="@+id/img_no_bookings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:contentDescription="@string/no_tickets"
+        android:src="@drawable/no_booking"/>
 </LinearLayout>

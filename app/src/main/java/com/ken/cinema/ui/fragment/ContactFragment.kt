@@ -2,17 +2,22 @@ package com.ken.cinema.ui.fragment
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapFragment
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.ken.cinema.R
 import com.ken.cinema.databinding.FragmentContactBinding
+import com.ken.cinema.util.FIRESTORE_STORAGE
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -33,7 +38,10 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
             map = it
             map!!.uiSettings.isMapToolbarEnabled = true
             map!!.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15F))
-            map!!.addCircle(CircleOptions().center(location).radius(30.0).strokeWidth(2.0F).fillColor(Color.GRAY).strokeColor(Color.BLACK))
+            map!!.addCircle(
+                CircleOptions().center(location).radius(30.0).strokeWidth(2.0F)
+                    .fillColor(Color.GRAY).strokeColor(Color.BLACK)
+            )
             map!!.addMarker(
                 MarkerOptions()
                     .position(location)
@@ -43,6 +51,39 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
             )
 
         }
+
+        binding.submit.setOnClickListener {
+            submitFeedback()
+        }
+    }
+
+    private fun submitFeedback() {
+        val feedBackText = binding.feedbackText.editText?.text?.trim().toString()
+        val optionalContact = binding.contactDetail.editText?.text?.trim().toString()
+        val userEmail = Firebase.auth.currentUser!!.email
+        val userRating = binding.rating.rating
+        val db = Firebase.firestore
+
+        if (feedBackText.isEmpty()) {
+            binding.feedbackText.isErrorEnabled = true
+            binding.feedbackText.error = resources.getString(R.string.feedback_error)
+        } else {
+            val userFeedback = hashMapOf(
+                "feedback" to feedBackText,
+                "user" to userEmail,
+                "contact" to optionalContact,
+                "rating" to userRating
+            )
+            db.collection("feedbacks")
+                .add(userFeedback)
+                .addOnSuccessListener {
+                    Toast.makeText(activity?.applicationContext,"Feedback is Highly Appreciated.",Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { exception ->
+                    Log.e(FIRESTORE_STORAGE,"Error saving document ${exception.localizedMessage}")
+                }
+        }
+
     }
 
 
@@ -81,5 +122,6 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
         super.onSaveInstanceState(outState)
         binding.mapView?.onSaveInstanceState(outState)
     }
+
 
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.size
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
@@ -34,7 +35,12 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
 
         lifecycle.coroutineScope.launch {
             viewModel.fetchTickets().collect {
-                adapter.submitList(it)
+                if (it.isEmpty()){
+                    binding.imgNoBookings.visibility = View.VISIBLE
+                    binding.listTickets.visibility = View.GONE
+                }else {
+                    adapter.submitList(it)
+                }
             }
         }
 
