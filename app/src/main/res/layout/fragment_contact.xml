@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -21,11 +21,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/email"
+                android:id="@+id/company_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/dimension_16"
+                android:layout_marginTop="@dimen/dimension_8"
                 android:text="@string/email_cinema"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,35 +33,36 @@
                 app:layout_constraintVertical_chainStyle="spread" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/phone"
+                android:id="@+id/company_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/dimension_16"
+                android:layout_marginTop="@dimen/dimension_8"
                 android:text="@string/phone_number_cinema"
-                android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email" />
+                app:layout_constraintTop_toBottomOf="@id/company_email" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/opening_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="@dimen/dimension_16"
+                android:layout_marginTop="@dimen/dimension_8"
+                android:text="@string/opening_hours"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:layout_constraintTop_toBottomOf="@id/phone"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@string/opening_hours"/>
+                app:layout_constraintTop_toBottomOf="@id/company_phone" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/feedbackText"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/dimension_16"
+                android:layout_marginTop="@dimen/dimension_8"
+                android:layout_marginEnd="@dimen/dimension_16"
                 android:hint="@string/type_your_feedback"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +71,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -78,9 +80,9 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="@dimen/dimension_16"
+                android:layout_marginTop="@dimen/dimension_8"
+                android:layout_marginEnd="@dimen/dimension_16"
                 android:hint="@string/optional_contact_detail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -89,14 +91,16 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <RatingBar
                 android:id="@+id/rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dimension_8"
+                android:contentDescription="@string/rating_between_1_to_5"
                 android:numStars="5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -104,23 +108,25 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/submit"
-                android:layout_width="200dp"
+                android:layout_width="@dimen/dimension_200"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/dimension_8"
+                android:layout_marginBottom="@dimen/dimension_8"
                 android:text="@string/submit"
-                android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rating" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/dimension_200"
             android:layout_marginTop="@dimen/dimension_8"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            android:contentDescription="@string/location_of_cinema_application"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

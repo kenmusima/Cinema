@@ -49,7 +49,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="@dimen/dimension_8"
             app:endIconMode="password_toggle"
             app:errorEnabled="true">
 
@@ -65,7 +65,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="@dimen/dimension_8"
             app:endIconMode="password_toggle"
             app:errorEnabled="true">
 
@@ -81,7 +81,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:padding="@dimen/dimension_8"
             app:startIconDrawable="@drawable/ic_baseline_contact_phone_24"
             app:errorEnabled="true">
 
@@ -106,17 +106,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="@dimen/dimension_16"
+            android:layout_marginRight="@dimen/dimension_16"
+            android:layout_marginBottom="@dimen/dimension_16"
             android:text="@string/register"
             app:elevation="16dp" />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/goToLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp"
-            android:text="Already Registered? Click Here To LogIn"
+            android:paddingBottom="@dimen/dimension_16"
+            android:text="@string/proceed_to_login"
             android:gravity="center"/>
 
     </LinearLayout>

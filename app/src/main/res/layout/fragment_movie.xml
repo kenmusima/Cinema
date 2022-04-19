@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/md_theme_light_primaryContainer"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/md_theme_light_primaryContainer">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,15 +23,15 @@
             <SearchView
                 android:id="@+id/search"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_margin="8dp"
+                android:layout_height="@dimen/dimension_40"
+                android:layout_margin="@dimen/dimension_8"
                 android:background="@drawable/search_background"
                 android:focusableInTouchMode="true"
-                android:queryHint="Search For A Movie"
                 android:imeOptions="actionSearch"
                 android:padding="8dp"
                 android:queryBackground="@color/md_theme_light_onSecondary"
-                />
+                android:queryHint="Search For A Movie"
+                tools:targetApi="lollipop" />
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -45,9 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:paddingStart="@dimen/dimension_8"
                 android:paddingTop="@dimen/dimension_8"
                 android:paddingEnd="@dimen/dimension_8"
-                android:paddingStart="@dimen/dimension_8"
                 android:paddingBottom="?actionBarSize"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:spanCount="2"
@@ -58,10 +58,10 @@
             android:id="@+id/retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Press to Retry"
+            android:text="@string/text_press_to_retry"
             android:textAlignment="center"
             android:visibility="gone"
-            android:drawableTop="@drawable/ic_connection_error"
+            app:drawableTopCompat="@drawable/ic_connection_error"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +69,9 @@
 
         <ImageView
             android:id="@+id/reload"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="@dimen/dimension_150"
+            android:layout_height="@dimen/dimension_150"
+            android:contentDescription="@string/img_currently_loading"
             android:src="@drawable/loading_image"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -80,16 +81,17 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/scrollIndicatorUp"
+            style="@style/FloatingActionButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimension_8"
+            android:contentDescription="@string/floatingactionbar_description"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
             android:visibility="gone"
             app:fabSize="mini"
-            style="@style/FloatingActionButtonStyle"
-            android:layout_margin="@dimen/dimension_8"
-            android:src="@drawable/ic_baseline_arrow_upward_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
