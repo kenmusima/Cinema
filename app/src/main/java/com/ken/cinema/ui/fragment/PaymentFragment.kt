@@ -3,15 +3,14 @@ package com.ken.cinema.ui.fragment
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.androidstudy.daraja.Daraja
 import com.androidstudy.daraja.DarajaListener
@@ -123,6 +122,8 @@ class PaymentFragment : Fragment(R.layout.fragment_payment),MpesaListener  {
                     "Phone: $phone\n" +
                     "Amount: $amount",Toast.LENGTH_LONG
             ).show()
+            val action = PaymentFragmentDirections.actionPaymentFragmentToMainFragment()
+            findNavController().navigate(action)
         }
     }
 

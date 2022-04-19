@@ -2,14 +2,11 @@ package com.ken.cinema.ui.fragment
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
-import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
@@ -19,8 +16,6 @@ import com.ken.cinema.data.model.Film
 import com.ken.cinema.databinding.FragmentSeatBinding
 import com.ken.cinema.ui.viewmodel.SeatViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.M)
 @AndroidEntryPoint
@@ -36,9 +31,15 @@ class SeatFragment : Fragment(R.layout.fragment_seat) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSeatBinding.bind(view)
-        setClickListeners()
         film = args.film
+        setClickListeners()
 
+        savedSeatIDS()
+        observeSeatNumbers()
+        selectedSeats()
+    }
+
+    private fun savedSeatIDS() {
         viewModel.seatIds.asLiveData().observe(viewLifecycleOwner) { str ->
             val seats = Gson().fromJson<ArrayList<Int>>(
                 str,
@@ -48,32 +49,16 @@ class SeatFragment : Fragment(R.layout.fragment_seat) {
                 val image = binding.layoutId.getChildAt(i)
                 if (seats.contains(image.id)) {
                     image.isSelected = !image.isSelected
-                    image.isActivated = !image.isActivated
+                    image.isClickable = false
                 }
             }
         }
-        viewModel.totalSeats.observe(viewLifecycleOwner, {
-            binding.seatsSelected.text = HtmlCompat.fromHtml(
-                getString(R.string.seats_number, it),
-                HtmlCompat.FROM_HTML_MODE_COMPACT
-            )
-        })
+    }
 
-        viewModel.getSeatIds().observe(viewLifecycleOwner) {
-            val json = Gson().toJson(it.toList())
-            viewModel.saveIDDataStore(json)
-
-            for (i in 0 until binding.layoutId.childCount) {
-                var imageView = binding.layoutId.getChildAt(i)
-                if (it.contains(imageView.id)) {
-                    imageView.isSelected = true
-                }
-            }
-        }
-
+    private fun selectedSeats() {
         binding.selectedSeats.setOnClickListener {
             val seats = viewModel.totalSeats.value!!.toInt()
-            viewModel.saveSeatIds()
+            viewModel.saveIDDataStore()
             val action = SeatFragmentDirections.actionSeatFragmentToDateFragment(
                 seats,
                 film
@@ -82,31 +67,15 @@ class SeatFragment : Fragment(R.layout.fragment_seat) {
         }
     }
 
-
-    private fun getSeatIds(): ArrayList<Int> {
-        var ids = ArrayList<Int>()
-
-        lifecycleScope.launch {
-            viewModel.seatIds.collectLatest { str ->
-                val seats = Gson().fromJson<ArrayList<Int>>(
-                    str,
-                    object : TypeToken<ArrayList<Int>>() {}.type
-                )
-                if (seats != null) {
-                    ids = seats
-                }
-
-            }
-        }
-
-        return ids
-
+    private fun observeSeatNumbers() {
+        viewModel.totalSeats.observe(viewLifecycleOwner, {
+            binding.seatsSelected.text = resources.getString(R.string.seats_number,it)
+        })
     }
-
 
     private fun setClickListeners() {
         for (i in 0 until binding.layoutId.childCount) {
-            var imageView = binding.layoutId.getChildAt(i)
+            val imageView = binding.layoutId.getChildAt(i)
             imageView.setOnClickListener {
                 it.isSelected = !it.isSelected
                 if (it.isSelected) {
