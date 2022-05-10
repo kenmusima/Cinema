@@ -1,4 +1,4 @@
-# Cinema (In Progress)
+# Cinema
 CinemaApp is an application that uses a section of Android Jetpack libraries and also Retrofit to display data from 
 [TheMovieDB](https://www.themoviedb.org/documentation/api) API in terms of popular movies for booking using [MPESA](https://en.wikipedia.org/wiki/M-Pesa).
 
